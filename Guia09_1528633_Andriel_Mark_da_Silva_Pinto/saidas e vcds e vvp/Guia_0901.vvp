@@ -1,0 +1,99 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\PROGRA~1\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\PROGRA~1\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\PROGRA~1\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\PROGRA~1\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\PROGRA~1\iverilog\lib\ivl\va_math.vpi";
+S_0000019e43b1b570 .scope module, "testbench" "testbench" 2 51;
+ .timescale 0 0;
+v0000019e43b659b0_0 .net "clk", 0 0, v0000019e43b57db0_0;  1 drivers
+v0000019e43b65a50_0 .var "on", 0 0;
+v0000019e43b65af0_0 .net "pulse_signal", 0 0, v0000019e43b1b930_0;  1 drivers
+v0000019e43b65b90_0 .net "trigger_signal", 0 0, v0000019e43b65910_0;  1 drivers
+S_0000019e43b1b700 .scope module, "CLKGEN" "clock" 2 57, 2 12 0, S_0000019e43b1b570;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "clk";
+v0000019e43b57db0_0 .var "clk", 0 0;
+S_0000019e43b65110 .scope module, "PULSEGEN" "pulse" 2 58, 2 27 0, S_0000019e43b1b570;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "signal";
+    .port_info 1 /INPUT 1 "clock";
+v0000019e43b1b890_0 .net "clock", 0 0, v0000019e43b57db0_0;  alias, 1 drivers
+v0000019e43b1b930_0 .var "signal", 0 0;
+E_0000019e43b19f00 .event anyedge, v0000019e43b57db0_0;
+S_0000019e43b652a0 .scope module, "TRIGGERGEN" "trigger" 2 59, 2 40 0, S_0000019e43b1b570;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "signal";
+    .port_info 1 /INPUT 1 "on";
+    .port_info 2 /INPUT 1 "clock";
+L_0000019e43b57b80 .functor AND 1, v0000019e43b57db0_0, v0000019e43b65a50_0, C4<1>, C4<1>;
+v0000019e43b65430_0 .net *"_ivl_1", 0 0, L_0000019e43b57b80;  1 drivers
+v0000019e43b657d0_0 .net "clock", 0 0, v0000019e43b57db0_0;  alias, 1 drivers
+v0000019e43b65870_0 .net "on", 0 0, v0000019e43b65a50_0;  1 drivers
+v0000019e43b65910_0 .var "signal", 0 0;
+E_0000019e43b19500 .event posedge, L_0000019e43b57b80;
+    .scope S_0000019e43b1b700;
+T_0 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000019e43b57db0_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_0000019e43b1b700;
+T_1 ;
+    %delay 12, 0;
+    %load/vec4 v0000019e43b57db0_0;
+    %inv;
+    %store/vec4 v0000019e43b57db0_0, 0, 1;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_0000019e43b65110;
+T_2 ;
+    %wait E_0000019e43b19f00;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000019e43b1b930_0, 0, 1;
+    %delay 3, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000019e43b1b930_0, 0, 1;
+    %delay 3, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000019e43b1b930_0, 0, 1;
+    %delay 3, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000019e43b1b930_0, 0, 1;
+    %jmp T_2;
+    .thread T_2, $push;
+    .scope S_0000019e43b652a0;
+T_3 ;
+    %wait E_0000019e43b19500;
+    %delay 60, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000019e43b65910_0, 0, 1;
+    %delay 60, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000019e43b65910_0, 0, 1;
+    %jmp T_3;
+    .thread T_3;
+    .scope S_0000019e43b1b570;
+T_4 ;
+    %vpi_call 2 63 "$dumpfile", "Guia_0901.vcd" {0 0 0};
+    %vpi_call 2 64 "$dumpvars", 32'sb00000000000000000000000000000001, S_0000019e43b1b570 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000019e43b65a50_0, 0, 1;
+    %delay 20, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000019e43b65a50_0, 0, 1;
+    %delay 300, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000019e43b65a50_0, 0, 1;
+    %delay 500, 0;
+    %vpi_call 2 72 "$finish" {0 0 0};
+    %end;
+    .thread T_4;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Guia_0901.v";

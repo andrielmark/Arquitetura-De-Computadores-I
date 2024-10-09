@@ -1,0 +1,59 @@
+$date
+	Sun Sep 29 13:48:22 2024
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module Guia_0907 $end
+$var wire 1 ! clock $end
+$upscope $end
+$scope module Guia_0907 $end
+$var wire 1 " pulse_signal $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+0"
+0!
+$end
+#12
+1"
+1!
+#20
+0"
+#24
+0!
+#36
+1"
+1!
+#44
+0"
+#48
+0!
+#60
+1"
+1!
+#68
+0"
+#72
+0!
+#84
+1"
+1!
+#92
+0"
+#96
+0!
+#108
+1"
+1!
+#116
+0"
+#120
+0!
